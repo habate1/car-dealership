@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class UserInterface {
 
@@ -30,6 +31,21 @@ public class UserInterface {
             System.out.println("99 - Quit");
             System.out.print("Enter option: ");
 
+            Scanner myscanner = new Scanner(System.in);
+            int input = myscanner.nextInt();
+
+            switch (input) {
+                case 1 -> processGetByPriceRequest();
+                case 2 -> processGetByMakeModelRequest();
+                case 3 -> processGetByYearRangeRequest();
+                case 4 -> processGetByColorRequest();
+                case 5 -> processGetByMileageRequest();
+                case 6 -> processGetByVehicleTypeRequest();
+                case 7 -> processGetAllVehicleRequest();
+                case 99 -> appRunning = false;
+                default -> System.out.println("Invalid option, please try again.");
+            }
+
 
         }
 
@@ -54,6 +70,36 @@ public class UserInterface {
     }
 
     public void processGetAllVehicleRequest(){
+
+        displayVehicles(dealership.getAllVehicles());
+
+    }
+
+    public void processGetByMakeModelRequest(){
+
+        displayVehicles(dealership.getAllVehicles());
+
+    }
+
+    public void processGetByYearRangeRequest(){
+
+        displayVehicles(dealership.getAllVehicles());
+
+    }
+
+    public void processGetByPriceRequest(){
+
+        //displayVehicles(dealership.getAllVehicles());
+
+    }
+
+    public void processGetByMileageRequest(){
+
+        displayVehicles(dealership.getAllVehicles());
+
+    }
+
+    public void processGetByVehicleTypeRequest(){
 
         displayVehicles(dealership.getAllVehicles());
 
