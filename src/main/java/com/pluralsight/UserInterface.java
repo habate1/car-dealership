@@ -94,8 +94,11 @@ public class UserInterface {
     }
 
     public void processGetByMakeModelRequest(){
-
-        //displayVehicles(dealership.getVehiclesByYear());
+        Scanner myscanner = new Scanner(System.in);
+        System.out.println("Please enter make and model: ");
+        String make = myscanner.nextLine();
+        String model = myscanner.nextLine();
+        displayVehicles(dealership.getVehiclesByMakeModel(make, model));
 
     }
 
@@ -120,14 +123,23 @@ public class UserInterface {
     }
 
     public void processGetByMileageRequest(){
+        Scanner myscanner = new Scanner(System.in);
+        System.out.println("Please enter min and max mileage: ");
+        int min = myscanner.nextInt();
+        int max = myscanner.nextInt();
 
-        displayVehicles(dealership.getAllVehicles());
+        displayVehicles(dealership.getVehiclesByMileage(min, max));
 
     }
 
     public void processGetByVehicleTypeRequest(){
 
-        displayVehicles(dealership.getAllVehicles());
+        Scanner myscanner = new Scanner(System.in);
+        System.out.println("Please enter type:");
+        String type = myscanner.nextLine();
+
+
+        displayVehicles(dealership.getVehiclesByType(type));
 
     }
 

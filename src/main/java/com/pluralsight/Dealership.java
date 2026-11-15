@@ -62,15 +62,14 @@ public class Dealership {
 
     public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model) {
 
-        //loop over inventory and return a list of vehicles that match the make and model
+       ArrayList<Vehicle> makeModelInventory = new ArrayList<>();
 
-        //start a new list for the filtered cars
-
-        //loop over inventory and add matching cards to filtered list
-
-        //return the list
-
-        return null;
+       for (Vehicle vehicle : getAllVehicles()) {
+           if (vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)) {
+               makeModelInventory.add(vehicle);
+           }
+       }
+        return makeModelInventory;
     }
 
     public ArrayList<Vehicle> getVehiclesByYear(int min, int max) {
@@ -100,28 +99,28 @@ public class Dealership {
 
     public ArrayList<Vehicle> getVehiclesByMileage(int min, int max) {
 
-        //loop over inventory and return a list of vehicles that match the min and max mileage
+        ArrayList<Vehicle> mileageInventory = new ArrayList<>();
 
-        //start a new list for the filtered cars
+        for (Vehicle vehicle : getAllVehicles()) {
+            if (vehicle.getOdometer() >= min && vehicle.getOdometer() <= max) {
+                mileageInventory.add(vehicle);
+            }
+        }
 
-        //loop over inventory and add matching cards to filtered list
-
-        //return the list
-
-        return null;
+        return mileageInventory;
     }
 
     public ArrayList<Vehicle> getVehiclesByType(String type) {
 
-        //loop over inventory and return a list of vehicles that match the type
+        ArrayList<Vehicle> typeInventory = new ArrayList();
 
-        //start a new list for the filtered cars
+        for (Vehicle vehicle : getAllVehicles()) {
+            if (vehicle.getVehicleType().equalsIgnoreCase(type)) {
+                typeInventory.add(vehicle);
+            }
+        }
 
-        //loop over inventory and add matching cards to filtered list
-
-        //return the list
-
-        return null;
+        return typeInventory;
     }
 
 }
