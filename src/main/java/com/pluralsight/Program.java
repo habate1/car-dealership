@@ -11,7 +11,6 @@ public class Program {
      */
     public static void main(String[] args) {
         new UserInterface().display();
-        Scanner myscanner = new Scanner(System.in);
-        int input = myscanner.nextInt();
+
     }
 }

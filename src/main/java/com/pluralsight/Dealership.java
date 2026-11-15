@@ -45,8 +45,19 @@ public class Dealership {
     }
 
     public ArrayList<Vehicle> getVehiclesByPrice(BigDecimal min, BigDecimal max) {
+        ArrayList<Vehicle> priceInventory = new ArrayList<>();
 
-        return null;
+        for (Vehicle vehicle : getAllVehicles()) {
+            if (vehicle.getPrice().compareTo(min) >= 0) {
+                if (vehicle.getPrice().compareTo(max) <= 0) {
+                    priceInventory.add(vehicle);
+
+                }
+            }
+
+        }
+
+        return priceInventory;
     }
 
     public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model) {
@@ -62,30 +73,29 @@ public class Dealership {
         return null;
     }
 
-    public ArrayList<Vehicle> getVehiclesByYear(int min, int Max) {
+    public ArrayList<Vehicle> getVehiclesByYear(int min, int max) {
+        ArrayList<Vehicle> yearInventory = new ArrayList<>();
 
-        //loop over inventory and return a list of vehicles that match the year range
+        for (Vehicle Vehicle : getAllVehicles()) {
+            if (Vehicle.getYear() >= min && Vehicle.getYear() <= max) {
+                yearInventory.add(Vehicle);
+            }
+        }
 
-        //start a new list for the filtered cars
-
-        //loop over inventory and add matching cards to filtered list
-
-        //return the list
-
-        return null;
+        return yearInventory;
     }
 
     public ArrayList<Vehicle> getVehiclesByColor(String color) {
 
         //loop over inventory and return a list of vehicles that match the make and model
+        ArrayList<Vehicle> colorInventory = new ArrayList<>();
+        for (Vehicle Vehicle : getAllVehicles()) {
+            if (Vehicle.getColor().equalsIgnoreCase(color)) {
+                colorInventory.add(Vehicle);
+            }
+        }
 
-        //start a new list for the filtered cars
-
-        //loop over inventory and add matching cards to filtered list
-
-        //return the list
-
-        return null;
+        return colorInventory;
     }
 
     public ArrayList<Vehicle> getVehiclesByMileage(int min, int max) {

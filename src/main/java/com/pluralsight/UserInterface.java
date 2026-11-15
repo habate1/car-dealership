@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -42,11 +43,12 @@ public class UserInterface {
                 case 5 -> processGetByMileageRequest();
                 case 6 -> processGetByVehicleTypeRequest();
                 case 7 -> processGetAllVehicleRequest();
+                case 8 -> processAddVehicle();
+                case 9 -> processRemoveVehicle();
+                case 10 -> processSellVehicle();
                 case 99 -> appRunning = false;
                 default -> System.out.println("Invalid option, please try again.");
             }
-
-
         }
 
     }
@@ -57,13 +59,29 @@ public class UserInterface {
         DealershipFileManager dealership = new DealershipFileManager();
         this.dealership = dealership.getDealership();
 
+        System.out.println(this.dealership);
+
+    }
+
+    public void processAddVehicle() {
+
+    }
+
+    public void processRemoveVehicle() {
+
+    }
+
+    public void processSellVehicle() {
+
     }
 
     public void processGetByColorRequest(){
 
         //ask the user the color
-        String color = "blue";
-
+        //String color = "blue";
+        Scanner myscanner = new Scanner(System.in);
+        System.out.println("Please enter color:");
+        String color = myscanner.next();
 
         displayVehicles(dealership.getVehiclesByColor(color));
 
@@ -77,19 +95,27 @@ public class UserInterface {
 
     public void processGetByMakeModelRequest(){
 
-        displayVehicles(dealership.getAllVehicles());
+        //displayVehicles(dealership.getVehiclesByYear());
 
     }
 
     public void processGetByYearRangeRequest(){
 
-        displayVehicles(dealership.getAllVehicles());
+        Scanner myscanner = new Scanner(System.in);
+        System.out.println("Please enter year range:");
+        int minYear = myscanner.nextInt();
+        int maxYear = myscanner.nextInt();
+
+        displayVehicles(dealership.getVehiclesByYear(minYear, maxYear));
 
     }
 
     public void processGetByPriceRequest(){
-
-        //displayVehicles(dealership.getAllVehicles());
+        Scanner myscanner = new Scanner(System.in);
+        System.out.println("Please enter lower and higher price range");
+        BigDecimal lowerPrice = myscanner.nextBigDecimal();
+        BigDecimal higherPrice = myscanner.nextBigDecimal();
+        displayVehicles(dealership.getVehiclesByPrice(lowerPrice, higherPrice));
 
     }
 
