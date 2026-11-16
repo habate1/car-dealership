@@ -67,17 +67,17 @@ public class DealershipFileManager {
 
             // Write the dealership's name, address, and phone number on the first line.
             // Get the dealership's vehicle inventory.
-            //inventoryWriter.write(dealership.getName());
-            //inventoryWriter.write(dealership.getAddress());
-            //inventoryWriter.write(dealership.getPhone());
-            String dealershipLine = String.format("%s|%s|%s", dealership.getName(), dealership.getAddress(), dealership.getPhone());
 
+            String dealershipLine = String.format("%s|%s|%s", dealership.getName(), dealership.getAddress(), dealership.getPhone());
+            inventoryWriter.write(dealershipLine);
+            inventoryWriter.write("\n");
             // Loop through every vehicle.
             for (Vehicle vehicle : dealership.getAllVehicles()){
             // Write each vehicle's properties in the correct order, separated by pipes.
             // String line = String.format("%s|%s|%s|%s|%.2f", transaction.getDate(), transaction.getTime(), transaction.getDescription(), transaction.getVendor(), transaction.getAmount());
             String line = String.format("%s|%s|%s|%s|%s|%s|%s|%s", vehicle.getVin(), vehicle.getYear(), vehicle.getMake(), vehicle.getModel(), vehicle.getVehicleType(), vehicle.getColor(), vehicle.getOdometer(), vehicle.getOdometer());
-
+            inventoryWriter.write(line);
+            inventoryWriter.write("\n");
             // Close the writer when finished.
             //inventoryWriter.close();
             }
