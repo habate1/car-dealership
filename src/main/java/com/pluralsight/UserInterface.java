@@ -30,7 +30,6 @@ public class UserInterface {
             System.out.println("7 - List all vehicles");
             System.out.println("8 - Add a vehicle");
             System.out.println("9 - Remove a vehicle");
-            System.out.println("10 - Sell/Lease a Vehicle");
             System.out.println("99 - Quit");
             System.out.print("Enter option: ");
 
@@ -97,13 +96,14 @@ public class UserInterface {
         Scanner myscanner = new Scanner(System.in);
         System.out.println("Enter vehicle information to remove");
         int vin = myscanner.nextInt();
+        Vehicle vehicleToRemove = null;
         for (Vehicle vehicle : dealership.getAllVehicles()) {
             if (vehicle.getVin() == vin) {
-                processRemoveVehicle();
+                vehicleToRemove = vehicle;
             }
         }
-
-
+        dealership.removeVehicle(vehicleToRemove);
+        dealershipFileManager.saveDealership(dealership);
     }
 
     public void processSellVehicle() {
