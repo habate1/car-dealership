@@ -94,6 +94,15 @@ public class UserInterface {
     }
 
     public void processRemoveVehicle() {
+        Scanner myscanner = new Scanner(System.in);
+        System.out.println("Enter vehicle information to remove");
+        int vin = myscanner.nextInt();
+        for (Vehicle vehicle : dealership.getAllVehicles()) {
+            if (vehicle.getVin() == vin) {
+                processRemoveVehicle();
+            }
+        }
+
 
     }
 

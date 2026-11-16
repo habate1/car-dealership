@@ -34,7 +34,6 @@ public class Dealership {
     /*
         All the search methods on Dealership should return null.
         The removeVehicle() method on Dealership should be empty
-        Code the following methods on Dealership:
 
         In the Dealership constructor:
         Instantiate the inventory property as an ArrayList<Vehicle>.
