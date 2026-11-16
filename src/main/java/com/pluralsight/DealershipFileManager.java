@@ -1,7 +1,6 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.math.BigDecimal;
 
 public class DealershipFileManager {
@@ -59,5 +58,32 @@ public class DealershipFileManager {
         return dealership;
     }
     public void saveDealership(Dealership dealership){
+        // takes java objects and writes it to the file
+
+        // Create a FileWriter to write to inventory.csv.
+        //  Wrap it in a BufferedWriter.
+        //BufferedWriter inventoryWriter = new BufferedWriter(new FileWriter("inventory.csv"));
+        try (BufferedWriter inventoryWriter = new BufferedWriter(new FileWriter("inventory.csv", false))) {
+
+            // Write the dealership's name, address, and phone number on the first line.
+            // Get the dealership's vehicle inventory.
+            //inventoryWriter.write(dealership.getName());
+            //inventoryWriter.write(dealership.getAddress());
+            //inventoryWriter.write(dealership.getPhone());
+            String dealershipLine = String.format("%s|%s|%s", dealership.getName(), dealership.getAddress(), dealership.getPhone());
+
+            // Loop through every vehicle.
+            for (Vehicle vehicle : dealership.getAllVehicles()){
+            // Write each vehicle's properties in the correct order, separated by pipes.
+            // String line = String.format("%s|%s|%s|%s|%.2f", transaction.getDate(), transaction.getTime(), transaction.getDescription(), transaction.getVendor(), transaction.getAmount());
+            String line = String.format("%s|%s|%s|%s|%s|%s|%s|%s", vehicle.getVin(), vehicle.getYear(), vehicle.getMake(), vehicle.getModel(), vehicle.getVehicleType(), vehicle.getColor(), vehicle.getOdometer(), vehicle.getOdometer());
+
+            // Close the writer when finished.
+            //inventoryWriter.close();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

@@ -4,9 +4,11 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class UserInterface {
 
     Dealership dealership;
+    DealershipFileManager dealershipFileManager;
 
     public UserInterface() {
 
@@ -59,12 +61,36 @@ public class UserInterface {
         DealershipFileManager dealership = new DealershipFileManager();
         this.dealership = dealership.getDealership();
 
+        dealershipFileManager = new DealershipFileManager();
+        this.dealership = dealershipFileManager.getDealership();
+
         System.out.println(this.dealership);
 
     }
 
     public void processAddVehicle() {
-
+        Scanner myscanner = new Scanner(System.in);
+        System.out.println("Please add vehicle information. ");
+        System.out.println("vin: ");
+        int vin = myscanner.nextInt();
+        System.out.println("year: ");
+        int year = myscanner.nextInt();
+        myscanner.nextLine();
+        System.out.println("make: ");
+        String make = myscanner.nextLine();
+        System.out.println("model: ");
+        String model = myscanner.nextLine();
+        System.out.println("type: ");
+        String type = myscanner.nextLine();
+        System.out.println("color: ");
+        String color = myscanner.nextLine();
+        System.out.println("mileage: ");
+        int mileage = myscanner.nextInt();
+        System.out.println("price: ");
+        BigDecimal price = myscanner.nextBigDecimal();
+        Vehicle vehicle = new Vehicle(vin, year, make, model, type, color, mileage, price);
+        dealership.addVehicle(vehicle);
+        dealershipFileManager.saveDealership(dealership);
     }
 
     public void processRemoveVehicle() {

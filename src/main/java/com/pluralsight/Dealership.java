@@ -19,21 +19,34 @@ public class Dealership {
         this.inventory = new ArrayList<>();
     }
 
-    /*
-    All the search methods on Dealership should return null.
-    The removeVehicle() method on Dealership should be empty
-    Code the following methods on Dealership:
+    public String getName() {
+        return name;
+    }
 
-    In the Dealership constructor:
-    Instantiate the inventory property as an ArrayList<Vehicle>.
-     */
-    public void removeVehicle() {
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    /*
+        All the search methods on Dealership should return null.
+        The removeVehicle() method on Dealership should be empty
+        Code the following methods on Dealership:
+
+        In the Dealership constructor:
+        Instantiate the inventory property as an ArrayList<Vehicle>.
+         */
+    public void removeVehicle(Vehicle vehicle) {
+        this.inventory.remove(vehicle);
 
     }
 
     // adds a vehicle to the inventory
     public void addVehicle(Vehicle vehicle) {
-        this.inventory.add((vehicle));
+        this.inventory.add(vehicle);
 
     }
 
@@ -122,5 +135,6 @@ public class Dealership {
 
         return typeInventory;
     }
+
 
 }
