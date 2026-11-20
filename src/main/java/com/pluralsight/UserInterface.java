@@ -30,6 +30,7 @@ public class UserInterface {
             System.out.println("7 - List all vehicles");
             System.out.println("8 - Add a vehicle");
             System.out.println("9 - Remove a vehicle");
+            System.out.println("10 - Sell/Release a vehicle");
             System.out.println("99 - Quit");
             System.out.print("Enter option: ");
 
@@ -107,6 +108,7 @@ public class UserInterface {
     }
 
     public void processSellVehicle() {
+
 
     }
 
